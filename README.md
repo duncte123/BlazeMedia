@@ -1,2 +1,2 @@
 # BlazeMedia
-A discord bot for the BlazeMedia guild
+A discord bot for the BlazeMedia guild (https://discord.gg/W28ScBW)
