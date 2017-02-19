@@ -18,12 +18,14 @@ import me.duncte123.blazemedia.commands.HelpCommand;
 import me.duncte123.blazemedia.commands.JoinCommand;
 import me.duncte123.blazemedia.commands.LeaveCommand;
 import me.duncte123.blazemedia.commands.ListCommand;
+import me.duncte123.blazemedia.commands.NowPlayingCommand;
 import me.duncte123.blazemedia.commands.PPlayCommand;
 import me.duncte123.blazemedia.commands.PauseCommand;
 import me.duncte123.blazemedia.commands.PingCommand;
 import me.duncte123.blazemedia.commands.PlayCommand;
 import me.duncte123.blazemedia.commands.SkipCommand;
 import me.duncte123.blazemedia.commands.StopCommand;
+import me.duncte123.blazemedia.utils.AudioUtils;
 import me.duncte123.blazemedia.utils.CommandParser;
 import me.duncte123.blazemedia.utils.Config;
 import net.dv8tion.jda.core.AccountType;
@@ -36,6 +38,7 @@ import net.dv8tion.jda.core.utils.SimpleLog;
 public class Main {
 	
 	private static String logName = "BlazeMedia";
+	public static AudioUtils au;
 
 	private static JDA jda;
 	public static final CommandParser parser = new CommandParser();
@@ -112,6 +115,7 @@ public class Main {
 			jda.getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
 			jda.getPresence().setGame(Game.of("BlazeMedia V"+Config.version+"|"+Config.prefix+"help"));
 			//jda.getPresence().setGame(Game.of("BlazeMedia V"+Config.version+"|Under Construction", "https://www.twitch.tv/duncte123"));
+			au = new AudioUtils();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -131,6 +135,8 @@ public class Main {
 		commands.put("skip", new SkipCommand());
 		commands.put("pause", new PauseCommand());
 		commands.put("list", new ListCommand());
+		commands.put("nowplaying", new NowPlayingCommand());
+		commands.put("np", new NowPlayingCommand());
 	}
 	
 	public static final void log(String name, SimpleLog.Level lvl, String message){
