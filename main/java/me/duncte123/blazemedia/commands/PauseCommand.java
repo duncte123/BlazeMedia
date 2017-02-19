@@ -3,6 +3,7 @@ package me.duncte123.blazemedia.commands;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 
 import me.duncte123.blazemedia.Command;
+import me.duncte123.blazemedia.Main;
 import me.duncte123.blazemedia.audio.GuildMusicManager;
 import me.duncte123.blazemedia.utils.AudioUtils;
 import me.duncte123.blazemedia.utils.Config;
@@ -19,7 +20,7 @@ public class PauseCommand implements Command {
 
 	@Override
 	public void action(String[] args, MessageReceivedEvent event) {
-		AudioUtils au = new AudioUtils();
+		AudioUtils au = Main.au;
 		
 		Guild guild = event.getGuild();
 		GuildMusicManager mng = au.getMusicManager(guild);
